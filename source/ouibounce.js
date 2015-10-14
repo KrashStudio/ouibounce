@@ -6,6 +6,7 @@ function ouibounce(el, custom_config) {
     sensitivity  = setDefault(config.sensitivity, 20),
     timer        = setDefault(config.timer, 1000),
     delay        = setDefault(config.delay, 0),
+    manual       = setDefault(config.manual, false),
     callback     = config.callback || function() {},
     cookieExpire = setDefaultCookieExpire(config.cookieExpire) || '',
     cookieDomain = config.cookieDomain ? ';domain=' + config.cookieDomain : '',
@@ -76,6 +77,7 @@ function ouibounce(el, custom_config) {
   }
 
   function isDisabled() {
+    if (manual) return false;
     return checkCookieValue(cookieName, 'true') && !aggressive;
   }
 
