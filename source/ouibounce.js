@@ -29,7 +29,7 @@ function ouibounce(el, custom_config) {
     return "; expires=" + date.toUTCString();
   }
 
-  setTimeout(attachOuiBounce, timer);
+  if (!manual) setTimeout(attachOuiBounce, timer);
   function attachOuiBounce() {
     if (isDisabled()) { return; }
 
@@ -77,7 +77,6 @@ function ouibounce(el, custom_config) {
   }
 
   function isDisabled() {
-    if (manual) return false;
     return checkCookieValue(cookieName, 'true') && !aggressive;
   }
 
